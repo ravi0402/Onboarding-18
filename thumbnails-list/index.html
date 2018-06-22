@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>React App</title>
+	<script src="https://fb.me/react-0.14.3.js"></script>
+	<script src="https://fb.me/react-dom-0.14.3.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-5 target"></div>
+		</div>
+	</div>	
+</body>
+
+
+<script type="text/jsx">
+	// defining react component class 
+
+	var ThumbnailList = React.createClass(
+	{
+		render : function()
+		{
+			var list = this.props.thumbnails_data.map(function(eachThumbnail)
+			{
+				return <Thumbnail  {...eachThumbnail} />
+			});
+
+			return <div>{list}</div>
+
+		}
+		
+	});
+	var Badge = React.createClass({
+		render : function()
+		{
+			return <button type="button" className="btn btn-primary">
+						{this.props.title} <span className="badge badge-light">{this.props.number}</span>
+				   </button>
+		}
+	});
+
+
+	var Thumbnail = React.createClass(
+	{
+		render : function()
+		{
+			return <div className="thumbnail">
+				      <img src={this.props.imageUrl} width="380px" height="380px" />
+				      <div className="caption">
+				        <h3>{this.props.label}</h3>
+				        <p>{this.props.content}</p>
+				        <p><Badge title={this.props.title} number={this.props.number}/></p>
+				      </div>
+				    </div>
+		}
+	});
+
+
+
+	var options = 
+	{
+		thumbnails_data : [ { 
+		title : "Inbox",
+		number : 40,
+		imageUrl : "https://formatjs.io/img/react.svg" ,
+		label : "ReactJS",
+		content : "This is ReactJS"
+	},
+	{ 
+		title : "Inbox",
+		number : 40,
+		imageUrl : "https://formatjs.io/img/react.svg" ,
+		label : "ReactJS",
+		content : "This is ReactJS"
+	},
+	{ 
+		title : "Inbox",
+		number : 40,
+		imageUrl : "https://formatjs.io/img/react.svg" ,
+		label : "ReactJS",
+		content : "This is ReactJS"
+	},
+	{ 
+		title : "Inbox",
+		number : 40,
+		imageUrl : "https://formatjs.io/img/react.svg" ,
+		label : "ReactJS",
+		content : "This is ReactJS"
+	}
+	]
+
+	};
+	
+
+	var element = React.createElement(ThumbnailList, options);
+
+
+	// var element = React.createElement(Badge, options);
+	// var element_thumbnail = React.createElement(Thumbnail, options);	
+	
+
+	// ask react to render the class 
+	ReactDOM.render(element, document.querySelector('.target'));
+
+</script>
+
+</html>
