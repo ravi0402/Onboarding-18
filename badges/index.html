@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>React App</title>
+	<script src="https://fb.me/react-0.14.3.js"></script>
+	<script src="https://fb.me/react-dom-0.14.3.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+</body>
+
+<script type="text/jsx">
+	// defining react component class 
+	var Badge = React.createClass({
+		render : function()
+		{
+			return <button type="button" className="btn btn-primary">
+				{this.props.title} <span className="badge badge-light">{this.props.number}</span>
+			</button>
+		}
+	});
+
+	var options = 
+	{
+		title : "Inbox",
+		number : 40
+	};
+
+	// ask react to render the class 
+	var element = React.createElement(Badge, options);
+
+	ReactDOM.render(element, document.body);
+
+</script>
+
+</html>
